@@ -1,0 +1,17 @@
+[Unit]
+Description=9Router AI Proxy
+After=network.target
+
+[Service]
+Type=simple
+User=ictsindy
+WorkingDirectory=/home/ictsindy
+Environment=PATH=/home/ictsindy/.nvm/versions/node/v24.19.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/home/ictsindy/.nvm/versions/node/v24.19.0/bin/node /home/ictsindy/.nvm/versions/node/v24.19.0/bin/9router -t --skip-update -n -H 127.0.0.1
+Restart=on-failure
+RestartSec=5
+OOMScoreAdjust=-500
+ManagedOOMMemoryPressureLimit=0%
+
+[Install]
+WantedBy=multi-user.target
